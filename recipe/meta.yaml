@@ -1,5 +1,5 @@
 {% set name = "sphinxcontrib-httpdomain" %}
-{% set version = "1.7.0" %}
+{% set version = "1.8.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: ac40b4fba58c76b073b03931c7b8ead611066a6aebccafb34dc19694f4eb6335
+  sha256: 2059cfabd0cca8fcc3455cc8ffad92f0915a7d3bb03bfddba078a6a0f35beec5
 
 build:
   noarch: python
   number: 0
-  script: python -m pip install --no-deps --ignore-installed .
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   host:
@@ -32,7 +32,7 @@ about:
   license: BSD-2-Clause
   license_family: BSD
   license_file: LICENSE
-  summary: 'Sphinx domain for describing HTTP APIs'
+  summary: Sphinx domain for describing HTTP APIs
   description: |
     This contrib extension, `sphinxcontrib.httpdomain¡, provides a Sphinx domain
      for describing HTTP APIs.
