@@ -1,0 +1,49 @@
+schema_version: 1
+
+context:
+  name: sphinxcontrib-httpdomain
+  version: 1.8.1
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
+  sha256: 6c2dfe6ca282d75f66df333869bb0ce7331c01b475db6809ff9d107b7cdfe04b
+
+build:
+  number: 2
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - pip
+    - setuptools
+  run:
+    - python >=${{ python_min }}
+    - sphinx >=1.6
+    - six
+
+tests:
+  - python:
+      imports:
+        - sphinxcontrib
+      python_version: ${{ python_min }}.*
+about:
+  license: BSD-2-Clause
+  license_file: LICENSE
+  summary: Sphinx domain for describing HTTP APIs
+  description: |
+    This contrib extension, `sphinxcontrib.httpdomain¡, provides a Sphinx domain
+    for describing HTTP APIs.
+  homepage: https://github.com/sphinx-contrib/httpdomain
+  repository: https://github.com/sphinx-contrib/httpdomain
+  documentation: https://sphinxcontrib-httpdomain.readthedocs.io/en/stable/
+
+extra:
+  recipe-maintainers:
+    - conda-forge/sphinx
+    - carlodri
