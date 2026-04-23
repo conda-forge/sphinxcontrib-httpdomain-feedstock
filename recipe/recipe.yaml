@@ -2,18 +2,18 @@ schema_version: 1
 
 context:
   name: sphinxcontrib-httpdomain
-  version: 1.8.1
+  version: 2.0.0
 
 package:
   name: ${{ name|lower }}
   version: ${{ version }}
 
 source:
-  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
-  sha256: 6c2dfe6ca282d75f66df333869bb0ce7331c01b475db6809ff9d107b7cdfe04b
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name | replace('-', '_') }}-${{ version }}.tar.gz
+  sha256: 9e4e8733bf41ee4d9d5f9eb4dbf3cc2c22a665221ba42c5c3ae181b98af8855d
 
 build:
-  number: 2
+  number: 0
   noarch: python
   script: ${{ PYTHON }} -m pip install . -vv
 
@@ -24,9 +24,7 @@ requirements:
     - setuptools
   run:
     - python >=${{ python_min }}
-    - sphinx >=1.6
-    - six
-
+    - sphinx >=6.0
 tests:
   - python:
       imports:
