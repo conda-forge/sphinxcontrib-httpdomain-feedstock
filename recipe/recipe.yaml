@@ -21,7 +21,7 @@ requirements:
   host:
     - python ${{ python_min }}.*
     - pip
-    - uv_build >=0.12.22,<0.14.0   # replaces setuptools
+    - uv-build >=0.12.22,<0.14.0   # replaces setuptools
   run:
     - python >=${{ python_min }}
     - sphinx >=8.1.3
